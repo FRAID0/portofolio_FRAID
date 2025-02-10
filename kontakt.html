@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="./portofolio.js" defer></script>
+
+</head>
+
+
+<body>
+    <nav class="navigation">
+        <h1 class="title">
+            <span>P</span>
+            <span>O</span>
+            <span>R</span>
+            <span>T</span>
+            <span>F</span>
+            <span>O</span>
+            <span>L</span>
+            <span>I</span>
+            <span>O</span>
+        </h1>
+        
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="projekts.html">projects</a></li>
+            <li><a href="kontakt.html">kontakt</a></li>
+        </ul>
+    </nav>
+
+
+
+    <div class="contact-container">
+        <h1>Kontaktieren Sie mich.</h1>
+    
+        <form id="comment-form">
+            <input type="email" id="email" placeholder="Ihre Email" required>
+            <input type="text" id="project" placeholder="Projekt, das Sie interessiert hat" required>
+    
+            <textarea id="public-comment" placeholder="Hinterlassen Sie einen öffentlichen Kommentar." required></textarea>
+    
+            <button type="button" id="send-comment">Senden Sie den Kommentar</button>
+        </form>
+    
+        <div class="contact-question">
+            <p>Möchten Sie mich direkt kontaktieren?</p>
+            <label>
+                <input type="radio" name="contact-choice" value="ja"> ja
+            </label>
+            <label>
+                <input type="radio" name="contact-choice" value="nein" checked> nein
+            </label>
+        </div>
+    
+        <form id="private-message-form" style="display: none;">
+            <textarea id="private-message" placeholder="Ihre E-Mail-Adresse, Telefonnummer (falls möglich), geben Sie an, ob Sie ein Unternehmen sind und verfassen Sie Ihre Nachricht."></textarea>
+            
+            <button type="button" id="send-private-message">Senden Sie die private Nachricht.</button>
+        </form>
+    
+        <h2>Kommentare der Besucher.</h2>
+        <div id="comments-list"></div>
+    
+
+    </div>
+    
+
+
+
+
+</body>
+
+<footer>
+    <p>le footer</p>
+</footer>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="./portofolio.js" defer></script>
+
+</head>
+
+
+<body>
+    <nav class="navigation">
+        <h1 class="title">
+            <span>P</span>
+            <span>O</span>
+            <span>R</span>
+            <span>T</span>
+            <span>F</span>
+            <span>O</span>
+            <span>L</span>
+            <span>I</span>
+            <span>O</span>
+        </h1>
+        
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="projekts.html">projects</a></li>
+            <li><a href="kontakt.html">kontakt</a></li>
+        </ul>
+    </nav>
+
+    <div class="vorstellungbox">
+        <span class="vorstellung" id="typing" > Je suis FRAID, fullstack developer, développement d'applications.</span>
+    </div>
+    <div class="box-projekt-info">
+        <div class="carousel">
+            <div class="carousel-track">
+        <div class="projekt" onclick="flipCard(this)">
+            <div class="card">
+                <div class="front">WEB ENTWICKLUNG</div>
+                <div class="back">
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JAVASCRIPT</li>
+                        <li>GIT (Github)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="link_to_projekt"><span><a href="projekts.html">Go to the Projekt</a></span></div>
+        </div>
+
+        <div class="projekt" onclick="flipCard(this)">
+            <div class="card">
+                <div class="front">GUI (Graphische User Interface)</div>
+                <div class="back">
+                    <ul>
+                        <li>PyQt6</li>
+                        <li>Tiny DB</li>
+                        <li>QT Designer</li>
+                        <li>PYTHON</li>
+                        <li>GIT (Gitlab)</li>
+                    </ul>                    
+                </div>
+            </div>
+            <div class="link_to_projekt"><span><a href="projekts.html">Go to the Projekt</a></span></div>
+        </div>
+    
+        <div class="projekt" onclick="flipCard(this)">
+            <div class="card">
+                <div class="front">FULLSTACK</div>
+                <div class="back">
+                    <ul>
+                        <li>ANGULAR</li>
+                        <li>NODE JS</li>
+                        <li>EXPRESS</li>
+                        <li>POSGRES SQL</li>
+                        <li>DOCKER</li>
+                        <li>GIT (Gitlab)</li>
+                    </ul>                    
+                </div>
+            </div>
+            <div class="link_to_projekt"><span><a href="projekts.html">Go to the Projekt</a></span></div>
+        </div>
+    
+        <div class="projekt" onclick="flipCard(this)">
+            <div class="card">
+                <div class="front">EMA (Mobile Entwicklung)</div>
+                <div class="back">
+                    <ul>
+                        <li>Flutter</li>
+                        <li>FIREBASE</li>
+                        <li>GIT(Github)</li>
+                    </ul> 
+                </div>
+            </div>
+            <div class="link_to_projekt"><span><a href="projekts.html">Go to the Projekt</a></span></div>
+        </div>
+    
+        <div class="projekt" onclick="flipCard(this)">
+            <div class="card">
+                <div class="front">IOT</div>
+                <div class="back">
+                    <ul>
+                        <li>Raspberry Pi 4</li>
+                        <li>MQTT</li>
+                        <li>TKHINTER</li>
+                        <li>DOCKER</li>
+                        <li>GIT (Gitlab)</li>
+                    </ul>                     
+                </div>
+            </div>
+            <div class="link_to_projekt"><span><a href="projekts.html">Go to the Projekt</a></span></div>
+        </div>
+
+        </div>
+        </div>
+    </div>
+    
+    <section class="presentationindex fade-in">
+        <p>Hallo! Ich bin <strong>FRAID</strong>, Student der <strong>Angewandten Informatik</strong> an der <strong>Hochschule Worms</strong> und begeisterter Softwareentwickler. </p>
+        <p>Mit dieser Website möchte ich meine Erfahrungen und Projekte teilen  von meinen ersten Schritten in der Programmierung bis hin zu anspruchsvollen Softwarelösungen.</p>
+    </section>
+    
+    <section class="competences fade-in">
+        <h2>💻 Mein Weg in der Entwicklung:</h2>
+        <p>Ich begann mit C und C++, bevor ich meine Kenntnisse auf moderne Technologien ausweitete. Heute arbeite ich an vielseitigen Projekten in verschiedenen Bereichen:</p>
+        <ul>
+            <li>🖥 <strong>Webentwicklung</strong> → HTML, CSS, JavaScript, Angular, Node.js</li>
+            <li>📱 <strong>Mobile Apps</strong> → Flutter, Firebase</li>
+            <li>💾 <strong>Grafische Benutzeroberflächen</strong> → PyQt6, TinyDB, Qt Designer</li>
+            <li>🔗 <strong>Back-End & Datenbanken</strong> → PostgreSQL, Express.js, Docker</li>
+            <li>🌍 <strong>IoT & Automatisierung</strong> → Raspberry Pi, MQTT, Tkinter</li>
+        </ul>
+    </section>
+    
+    <section class="objectif fade-in">
+        <h2>🔍 Warum diese Website?</h2>
+        <p>Dieses Portfolio dokumentiert meine <strong>Entwicklung</strong>, meine <strong>Lernprozesse</strong> und meine <strong>praktischen Projekte</strong>. Ob du einfach neugierig bist oder einen Entwickler für dein Projekt suchst – hier bist du genau richtig!</p>
+    </section>
+    
+    <section class="about-link fade-in">
+        <a href="about.html" class="btn">📌 Mehr über mich erfahren</a>
+    </section>
+    
+
+</body>
+
+<footer>
+    <p>le footer</p>
+</footer>
+</html>
