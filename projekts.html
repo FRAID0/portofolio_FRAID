@@ -38,7 +38,146 @@
     </nav>
 
 
-    <section class="project">
+    <section class="project" id="iot-sudoku">
+        <h2 class="project-title">IOT (Sudokuspiel)</h2>
+        <div class="project-content">
+            <div class="project-image">
+                <img src="images/IOT/WhatsApp Image 2025-02-09 at 12.45.20.jpeg" alt="Aperçu du projet">
+            </div>
+            <div class="project-info">
+                <p class="project-description">
+                    Entwicklung eines interaktiven Sudoku-Spiels mit Python und MQTT
+
+Erstellung eines Multiplayer-Sudoku-Spiels mit <strong>Python</strong>, das <strong>die MQTT-Protokollarchitektur</strong> für die Echtzeitkommunikation zwischen Spielern verwendet.
+Implementierung eines MQTT-Dienstes zur Verwaltung mehrerer Topics, um Spielinformationen wie Spieleraktionen, Zeitlimits und Punktestände zu synchronisieren.
+Gestaltung und Programmierung der Benutzeroberfläche mit <strong>Tkinter</strong>  zur Darstellung des Sudoku-Gitters und dynamischen Interaktionen.
+Entwicklung eines Services zur Übertragung von Spielständen zwischen den Teilnehmern und zur Synchronisierung des Fortschritts in Echtzeit.
+Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, einschließlich Timer, Score-Tracking und Interaktionen zwischen den Spielern.
+                </p>
+                <button class="details-btn" onclick="toggleDetails(this)">Mehr anzeigen</button>
+            </div>
+        </div>
+        <div class="project-details">
+
+            <h3>Verwendete Technologien und Fähigkeiten</h3>
+            <ul class="tech-list">
+                <li>MQTT</li>
+                <li>TKINTER</li>
+                <li>Raspberry</li>
+                <li>DOCKER</li>
+            </ul>
+        
+            <p class="github-link">
+                <a href="https://github.com/FRAID0/sudoku" target="_blank" rel="noopener noreferrer">Das Projekt auf GitHub ansehen</a>
+            </p>
+        
+            <h3>Meine Arbeit an diesem Projekt</h3>
+            <p class="personal-contribution">Im Rahmen dieses Projekts zur Entwicklung eines interaktiven Sudoku-Spiels war ich maßgeblich an der Erstellung der Spiel-Logik, der Benutzeroberfläche (UI) und der Integration des Echtzeit-Kommunikationssystems über das MQTT-Protokoll beteiligt. Hier ist eine detaillierte Übersicht über meine wichtigsten Beiträge:</p>
+
+            <p><strong>1. Entwicklung der Sudoku-Spiel-Logik</strong><br>
+            Das Herzstück des Projekts bildet die Spiel-Logik von Sudoku, und ich war für die Konzeption und Implementierung dieser wesentlichen Funktion verantwortlich. Dazu gehören:</p>
+            <ul>
+                <li><strong>Validierung der Eingaben der Spieler</strong> : Ich entwickelte einen Algorithmus, um sicherzustellen, dass die Zahlen, die von den Spielern eingegeben werden, die Sudoku-Regeln einhalten (keine Duplikate in den Zeilen, Spalten und Unterfeldern).</li>
+                <li><strong>Verwaltung des Rasters</strong> : Ich programmierte die dynamische Erstellung eines Sudoku-Rasters und implementierte Mechanismen, um die Felder basierend auf den Aktionen der Spieler zu füllen und zu aktualisieren.</li>
+                <li><strong>Synchronisation des Spiels</strong> : Durch die Verwendung von MQTT stellte ich die Echtzeit-Synchronisation des Spielzustands zwischen den Spielern sicher, um ein flüssiges und verzögerungsfreies Spielerlebnis zu gewährleisten.</li>
+            </ul>
+            
+            <p><strong>2. Gestaltung der Benutzeroberfläche mit Tkinter</strong><br>
+            Die grafische Benutzeroberfläche wurde mit der Bibliothek <strong>Tkinter</strong> erstellt, und ich war für die gesamte Programmierung der Benutzeroberfläche verantwortlich. Die wichtigsten Funktionen der Benutzeroberfläche sind:</p>
+            <ul>
+                <li><strong>Dynamische Anzeige des Rasters</strong> : Ich gestaltete eine interaktive Anzeige des Sudoku-Rasters, die es den Spielern ermöglicht, Zahlen einzugeben und die Updates in Echtzeit zu sehen.</li>
+                <li><strong>Verwaltung der Interaktionen</strong> : Ich implementierte Benutzerereignisse wie Klicks auf die Felder und die Logik, die den Spielzustand basierend auf den Aktionen der Spieler aktualisiert.</li>
+                <li><strong>Anzeigen der Ergebnisse</strong> : Sobald das Spiel beendet war, programmierte ich eine Funktion, die die Ergebnisse anzeigt, einschließlich der Punktzahlen und des Gewinners, in einem Popup-Fenster.</li>
+            </ul>
+            
+            <p><strong>3. Integration der Echtzeit-Kommunikation über MQTT</strong><br>
+            Ein entscheidender Teil des Projekts war die Ermöglichung der <strong>Echtzeit-Kommunikation</strong> zwischen den Spielern. Ich richtete ein <strong>MQTT</strong>-System ein, das die Synchronisation von Spieleraktionen, Punktständen und Zeitlimits ermöglichte. Hier sind die Elemente, die ich verwaltet habe:</p>
+            <ul>
+                <li><strong>Konfiguration des MQTT-Servers</strong> : Ich installierte und konfigurierte einen <strong>Dockerisierten MQTT-Server</strong>, der eine stabile Kommunikation zwischen den Spielern ermöglichte und gleichzeitig die Server-Ressourcen optimierte.</li>
+                <li><strong>Verwaltung der MQTT-Topics</strong> : Ich erstellte mehrere <strong>MQTT-Topics</strong>, um verschiedene Informationen zu verwalten, wie z. B. Spieleraktionen, Punktaktualisierungen und Zeitänderungen. Dadurch wurde die Synchronisation der Spiele zwischen den Teilnehmern sichergestellt.</li>
+                <li><strong>Verwaltung der Nachrichten und Abonnements</strong> : Ich entwickelte die Logik zum Veröffentlichen und Abonnieren von MQTT-Nachrichten, um den Spielstatus zu verwalten. Die Aktionen der Spieler (wie das Ausfüllen eines Feldes) wurden auf das entsprechende Topic veröffentlicht und in Echtzeit von allen Spielern empfangen.</li>
+            </ul>
+            
+            <p><strong>4. Synchronisation des Spiels mit den LEDs</strong><br>
+            Obwohl die Verwaltung der LEDs von einem anderen Teammitglied durchgeführt wurde, arbeitete ich in Zusammenarbeit mit ihm daran, die Steuerung der LEDs in den Spielablauf zu integrieren. Dies beinhaltete:</p>
+            <ul>
+                <li><strong>Verwendung von MQTT-Nachrichten</strong>, um die LEDs basierend auf dem Spielstatus ein- und auszuschalten (z. B. wenn das Spiel beendet ist oder ein Spieler eine Aktion ausführt).</li>
+                <li><strong>Koordination mit der Benutzeroberfläche</strong>, um visuelle Änderungen in Echtzeit anzuzeigen, wenn Ereignisse im Spiel auftreten.</li>
+            </ul>
+            
+            <p><strong>5. Verwendung von Threads zur Verwaltung von Zeit und Punktständen</strong><br>
+            Um das Spiel interaktiver und dynamischer zu gestalten, verwendete ich <strong>Python-Threads</strong> zur Verwaltung der folgenden Aspekte:</p>
+            <ul>
+                <li><strong>Der Spiel-Timer</strong> : Ein Timer läuft parallel, um die Zeit für jede Runde zu begrenzen, und ich verwendete Threads, um die gleichzeitige Ausführung des Timers zu steuern, ohne die Benutzeroberfläche zu blockieren.</li>
+                <li><strong>Verwaltung der Punktstände in Echtzeit</strong> : Ich richtete eine parallele Verwaltung der Punktstände ein, die sich in Echtzeit basierend auf den Aktionen der Spieler aktualisiert, während gleichzeitig die Benutzeroberfläche flüssig bleibt.</li>
+            </ul>
+            
+            <p><strong>6. Verwaltung der Installation auf dem Dockerisierten MQTT-Server</strong><br>
+            Ich war für die Installation und Konfiguration der <strong>MQTT-Serverumgebung</strong> mit <strong>Docker</strong> verantwortlich. Dieser Schritt ermöglichte eine einfache und schnelle Einrichtung des Servers und stellte sicher, dass eine skalierbare und leistungsstarke Lösung für die Echtzeitkommunikation zwischen den Spielern zur Verfügung stand.</p>
+            
+            <p><strong>Fazit</strong><br>
+            Durch dieses Projekt konnte ich meine Fähigkeiten in mehreren Schlüsselbereichen unter Beweis stellen, darunter:</p>
+            <ul>
+                <li><strong>Python-Programmierung</strong>, mit einem tiefen Verständnis für Bibliotheken wie Tkinter und MQTT.</li>
+                <li><strong>Verwaltung eines Dockerisierten Servers</strong>, um eine effiziente Kommunikation in Echtzeit zu optimieren.</li>
+                <li><strong>Entwicklung eines interaktiven Spiels</strong>, das eine komplexe Spiel-Logik und Echtzeit-Zustandsverwaltung umfasst.</li>
+            </ul>
+            
+            <p>Durch die Integration von Multiplayer-Funktionen mit MQTT konnte ich ein flüssiges und immersives Spielerlebnis bieten und gleichzeitig eine perfekte Synchronisation der Aktionen der Spieler sicherstellen. Dieses Projekt ist eine ausgezeichnete Gelegenheit, meine Fähigkeiten in der Softwareentwicklung und im Projektmanagement zu demonstrieren.</p>
+            
+        
+            <h3>Projektmedien</h3>
+        <div class="project-media swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/IOT/WhatsApp Image 2025-02-09 at 12.45.20.jpeg" alt="Image 2">
+                </div>                  
+                <div class="swiper-slide">
+                    <img src="images/IOT/WhatsApp Image 2025-01-30 at 05.32.59 (1).jpeg" alt="Image 1">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/IOT/WhatsApp Image 2025-02-09 at 23.51.46.jpeg" alt="Image 1">
+                </div>                
+                <div class="swiper-slide">
+                    <img src="images/IOT/WhatsApp Image 2025-02-09 at 23.51.47.jpeg" alt="Image 1">
+                </div>                
+                <div class="swiper-slide">
+                    <img src="images/IOT/WhatsApp Image 2025-01-30 at 05.32.59.jpeg" alt="Image 2">
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/IOT/WhatsApp Image 2025-01-30 at 05.33.14.jpeg" alt="Image 1">
+                </div>
+                <div class="swiper-slide">
+                    <video controls>
+                        <source src="images/IOT/IMG_7359.MP4" type="video/mp4">
+                        Ihr Browser unterstützt das Video nicht.
+                    </video>
+                </div>
+                <div class="swiper-slide">
+                    <video controls>
+                        <source src="images/IOT/video_2025-02-10_17-15-45.mp4" type="video/mp4">
+                        Ihr Browser unterstützt das Video nicht.
+                    </video>
+                </div>                
+                <div class="swiper-slide">
+                    <video controls>
+                        <source src="images/IOT/IMG_7360.MP4" type="video/mp4">
+                        Ihr Browser unterstützt das Video nicht.
+                    </video>
+                </div>                
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+
+            <button class="close-btn" onclick="closeDetails(this)">Schließen</button>
+        </div>
+    </section>
+    
+    
+    <section class="project" id="Webentwicklung">
         <h2 class="project-title">IOT (Sudokuspiel)</h2>
         <div class="project-content">
             <div class="project-image">
@@ -175,8 +314,6 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
             <button class="close-btn" onclick="closeDetails(this)">Schließen</button>
         </div>
     </section>
-    
-    
 
 
 
