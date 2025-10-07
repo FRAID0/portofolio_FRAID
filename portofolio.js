@@ -1,14 +1,141 @@
 document.addEventListener("DOMContentLoaded", function () {
     let vorstellung = document.getElementById("typing");
-    let phrases = [
-        "ich bin FRAID FOMEKONG.",
-        "Ich begann mit der Webentwicklung.",
-        "Dann wechselte ich zum Fullstack-Development.",
-        "Anschließend vertiefte ich mich in die GUI-Entwicklung.",
-        "Schließlich entdeckte ich das IoT.",
-        "Heute habe ich eine solide Grundlage in vielen Bereichen der Softwareentwicklung.."
-        
-    ];
+    const dictionaries = {
+        de: {
+            typing: [
+                "ich bin FRAID FOMEKONG.",
+                "Ich begann mit der Webentwicklung.",
+                "Dann wechselte ich zum Fullstack-Development.",
+                "Anschließend vertiefte ich mich in die GUI-Entwicklung.",
+                "Schließlich entdeckte ich das IoT.",
+                "Heute habe ich eine solide Grundlage in vielen Bereichen der Softwareentwicklung.."
+            ],
+            nav: { home: "Home", about: "about", projects: "projects", contact: "kontakt" },
+            link: { gotoProject: "Go to the Projekt" },
+            home: {
+                introTitle: "Introduction",
+                introP1: "Hallo! Ich bin <strong>FRAID</strong>, Student der <strong>Angewandten Informatik</strong> an der <strong>Hochschule Worms</strong> und begeisterter Softwareentwickler. ",
+                introP2: "Mit dieser Website möchte ich meine Erfahrungen und Projekte teilen  von meinen ersten Schritten in der Programmierung bis hin zu anspruchsvollen Softwarelösungen.",
+                skillsTitle: "💻 Mein Weg in der Entwicklung:",
+                skillsIntro: "Ich begann mit C und C++, bevor ich meine Kenntnisse auf moderne Technologien ausweitete. Heute arbeite ich an vielseitigen Projekten in verschiedenen Bereichen:",
+                skillWeb: "🖥 <strong>Webentwicklung</strong> → HTML, CSS, JavaScript, Angular, Node.js",
+                skillMobile: "📱 <strong>Mobile Apps</strong> → Flutter, Firebase",
+                skillGui: "💾 <strong>Grafische Benutzeroberflächen</strong> → PyQt6, TinyDB, Qt Designer",
+                skillBackend: "🔗 <strong>Back-End & Datenbanken</strong> → PostgreSQL, Express.js, Docker",
+                skillIoT: "🌍 <strong>IoT & Automatisierung</strong> → Raspberry Pi, MQTT, Tkinter",
+                whyTitle: "🔍 Warum diese Website?",
+                whyP1: "Dieses Portfolio dokumentiert meine <strong>Entwicklung</strong>, meine <strong>Lernprozesse</strong> und meine <strong>praktischen Projekte</strong>. Ob du einfach neugierig bist oder einen Entwickler für dein Projekt suchst – hier bist du genau richtig!",
+                moreAbout: "📌 Mehr über mich erfahren"
+            },
+            footer: {
+                about: "À propos",
+                aboutText: "FRAID — Étudiant en informatique appliquée, passionné par le développement logiciel.",
+                nav: "Navigation",
+                linkAbout: "À propos",
+                linkProjects: "Projets",
+                linkContact: "Contact",
+                contact: "Contact",
+                email: "Email",
+                rights: "Tous droits réservés."
+            }
+        },
+        fr: {
+            typing: [
+                "je suis FRAID FOMEKONG.",
+                "J'ai commencé par le développement web.",
+                "Puis je suis passé au full‑stack.",
+                "Ensuite, je me suis plongé dans les interfaces GUI.",
+                "Enfin, j'ai découvert l'IoT.",
+                "Aujourd'hui, j'ai une base solide dans de nombreux domaines du logiciel."
+            ],
+            nav: { home: "Accueil", about: "À propos", projects: "Projets", contact: "Contact" },
+            link: { gotoProject: "Voir le projet" },
+            home: {
+                introTitle: "Introduction",
+                introP1: "Bonjour ! Je suis <strong>FRAID</strong>, étudiant en <strong>informatique appliquée</strong> à la <strong>Hochschule Worms</strong> et passionné de développement logiciel.",
+                introP2: "Avec ce site, je partage mes expériences et projets – de mes débuts en programmation jusqu’à des solutions logicielles avancées.",
+                skillsTitle: "💻 Mon parcours en développement :",
+                skillsIntro: "J’ai commencé avec le C et le C++, puis j’ai étendu mes compétences vers des technologies modernes. Aujourd’hui je travaille sur des projets variés :",
+                skillWeb: "🖥 <strong>Développement Web</strong> → HTML, CSS, JavaScript, Angular, Node.js",
+                skillMobile: "📱 <strong>Applications Mobile</strong> → Flutter, Firebase",
+                skillGui: "💾 <strong>Interfaces Graphiques</strong> → PyQt6, TinyDB, Qt Designer",
+                skillBackend: "🔗 <strong>Back‑End & Bases</strong> → PostgreSQL, Express.js, Docker",
+                skillIoT: "🌍 <strong>IoT & Automatisation</strong> → Raspberry Pi, MQTT, Tkinter",
+                whyTitle: "🔍 Pourquoi ce site ?",
+                whyP1: "Ce portfolio documente mon <strong>évolution</strong>, mes <strong>apprentissages</strong> et mes <strong>projets pratiques</strong>. Que vous soyez curieux ou en recherche d’un développeur – vous êtes au bon endroit !",
+                moreAbout: "📌 En savoir plus sur moi"
+            },
+            footer: {
+                about: "À propos",
+                aboutText: "FRAID — Étudiant en informatique appliquée, passionné par le développement logiciel.",
+                nav: "Navigation",
+                linkAbout: "À propos",
+                linkProjects: "Projets",
+                linkContact: "Contact",
+                contact: "Contact",
+                email: "Email",
+                rights: "Tous droits réservés."
+            }
+        },
+        en: {
+            typing: [
+                "I am FRAID FOMEKONG.",
+                "I started with web development.",
+                "Then I moved to full‑stack.",
+                "After that I dived into GUI development.",
+                "Finally I discovered IoT.",
+                "Today I have a solid foundation across many software areas."
+            ],
+            nav: { home: "Home", about: "About", projects: "Projects", contact: "Contact" },
+            link: { gotoProject: "Go to project" },
+            home: {
+                introTitle: "Introduction",
+                introP1: "Hello! I am <strong>FRAID</strong>, an <strong>Applied Computer Science</strong> student at <strong>Hochschule Worms</strong> and a passionate software developer.",
+                introP2: "With this website I share my experiences and projects – from my programming beginnings to advanced solutions.",
+                skillsTitle: "💻 My path in development:",
+                skillsIntro: "I started with C and C++, then expanded to modern technologies. Today I work on diverse projects across several areas:",
+                skillWeb: "🖥 <strong>Web Development</strong> → HTML, CSS, JavaScript, Angular, Node.js",
+                skillMobile: "📱 <strong>Mobile Apps</strong> → Flutter, Firebase",
+                skillGui: "💾 <strong>Graphical Interfaces</strong> → PyQt6, TinyDB, Qt Designer",
+                skillBackend: "🔗 <strong>Back‑End & Databases</strong> → PostgreSQL, Express.js, Docker",
+                skillIoT: "🌍 <strong>IoT & Automation</strong> → Raspberry Pi, MQTT, Tkinter",
+                whyTitle: "🔍 Why this website?",
+                whyP1: "This portfolio documents my <strong>development</strong>, <strong>learning</strong> and <strong>hands‑on projects</strong>. Whether you’re curious or looking for a developer – you’re in the right place!",
+                moreAbout: "📌 Learn more about me"
+            },
+            footer: {
+                about: "About",
+                aboutText: "FRAID — Applied Computer Science student, passionate about software development.",
+                nav: "Navigation",
+                linkAbout: "About",
+                linkProjects: "Projects",
+                linkContact: "Contact",
+                contact: "Contact",
+                email: "Email",
+                rights: "All rights reserved."
+            }
+        }
+    };
+
+    function getLang() { return localStorage.getItem('lang') || 'de'; }
+    function setLang(lang) { localStorage.setItem('lang', lang); }
+
+    function applyTranslations(lang) {
+        const dict = dictionaries[lang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const path = el.getAttribute('data-i18n');
+            const keys = path.split('.');
+            let node = dict;
+            for (const k of keys) { node = node && node[k]; }
+            if (typeof node === 'string') {
+                // Permet du HTML dans certaines chaînes (strong)
+                el.innerHTML = node;
+            }
+        });
+        phrases = dict.typing;
+    }
+
+    let phrases = dictionaries[getLang()].typing;
 
     let phraseIndex = 0;
     let charIndex = 0;
@@ -45,6 +172,35 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     typeWriter(); 
+
+    // Lang switcher
+    const langSelect = document.getElementById('lang-select');
+    if (langSelect) {
+        langSelect.value = getLang();
+        applyTranslations(getLang());
+        langSelect.addEventListener('change', () => {
+            const lang = langSelect.value;
+            setLang(lang);
+            applyTranslations(lang);
+        });
+    } else {
+        applyTranslations(getLang());
+    }
+});
+
+// Navigation burger et année dans le footer
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('primary-navigation');
+    if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', (!expanded).toString());
+        });
+    }
+
+    const yearEl = document.getElementById('year');
+    if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
 });
 
 

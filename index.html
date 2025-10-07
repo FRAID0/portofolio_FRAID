@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de FRAID – Étudiant en informatique appliquée. Projets web, mobile, IoT, GUI et full‑stack.">
     <title>PORTFOLIO</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="./portofolio.js" defer></script>
@@ -12,7 +13,9 @@
 
 
 <body>
-    <nav class="navigation">
+    <a href="#main" class="skip-link">Aller au contenu</a>
+    <nav class="navigation" role="navigation" aria-label="Navigation principale">
+        <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">☰<span class="sr-only">Menu</span></button>
         <h1 class="title">
             <span>P</span>
             <span>O</span>
@@ -24,19 +27,28 @@
             <span>I</span>
             <span>O</span>
         </h1>
+        <div class="lang-wrapper">
+            <label for="lang-select" class="sr-only">Langue</label>
+            <select id="lang-select" class="lang-select" aria-label="Sélecteur de langue">
+                <option value="de">DE</option>
+                <option value="fr">FR</option>
+                <option value="en">EN</option>
+            </select>
+        </div>
         
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">about</a></li>
-            <li><a href="projekts.html">projects</a></li>
-            <li><a href="kontakt.html">kontakt</a></li>
+        <ul id="primary-navigation" class="nav-list">
+            <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="about.html" data-i18n="nav.about">about</a></li>
+            <li><a href="projekts.html" data-i18n="nav.projects">projects</a></li>
+            <li><a href="kontakt.html" data-i18n="nav.contact">kontakt</a></li>
         </ul>
     </nav>
 
     <div class="vorstellungbox">
         <span class="vorstellung" id="typing" > Je suis FRAID.</span>
     </div>
-    <div class="box-projekt-info">
+    <main id="main" role="main">
+    <div class="box-projekt-info" aria-label="Catégories de projets">
         <div class="carousel">
             <div class="carousel-track">
         <div class="projekt" onclick="flipCard(this)">
@@ -51,7 +63,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="link_to_projekt"><span><a href="projekts.html#Webentwicklung">Go to the Projekt</a></span></div>
+            <div class="link_to_projekt"><span><a href="projekts.html#Webentwicklung" data-i18n="link.gotoProject">Go to the Projekt</a></span></div>
         </div>
 
         <div class="projekt" onclick="flipCard(this)">
@@ -67,7 +79,7 @@
                     </ul>                    
                 </div>
             </div>
-            <div class="link_to_projekt"><span><a href="projekts.html#iot-sudoku">Go to the Projekt</a></span></div>
+            <div class="link_to_projekt"><span><a href="projekts.html#iot-sudoku" data-i18n="link.gotoProject">Go to the Projekt</a></span></div>
         </div>
     
         <div class="projekt" onclick="flipCard(this)">
@@ -84,7 +96,7 @@
                     </ul>                    
                 </div>
             </div>
-            <div class="link_to_projekt"><span><a href="projekts.html">Go to the Projekt</a></span></div>
+            <div class="link_to_projekt"><span><a href="projekts.html" data-i18n="link.gotoProject">Go to the Projekt</a></span></div>
         </div>
     
         <div class="projekt" onclick="flipCard(this)">
@@ -102,7 +114,7 @@
                     </ul>                    
                 </div>
             </div>
-            <div class="link_to_projekt"><span><a href="projekts.html#TOP">Go to the Projekt</a></span></div>
+            <div class="link_to_projekt"><span><a href="projekts.html#TOP" data-i18n="link.gotoProject">Go to the Projekt</a></span></div>
         </div>
         <div class="projekt" onclick="flipCard(this)">
             <div class="card">
@@ -115,7 +127,7 @@
                     </ul> 
                 </div>
             </div>
-            <div class="link_to_projekt"><span><a href="projekts.html">Go to the Projekt</a></span></div>
+            <div class="link_to_projekt"><span><a href="projekts.html" data-i18n="link.gotoProject">Go to the Projekt</a></span></div>
         </div>
     
         <div class="projekt" onclick="flipCard(this)">
@@ -131,43 +143,70 @@
                     </ul>                     
                 </div>
             </div>
-            <div class="link_to_projekt"><span><a href="projekts.html">Go to the Projekt</a></span></div>
+            <div class="link_to_projekt"><span><a href="projekts.html" data-i18n="link.gotoProject">Go to the Projekt</a></span></div>
         </div>
 
         </div>
         </div>
     </div>
     
-    <section class="presentationindex fade-in">
-        <p>Hallo! Ich bin <strong>FRAID</strong>, Student der <strong>Angewandten Informatik</strong> an der <strong>Hochschule Worms</strong> und begeisterter Softwareentwickler. </p>
-        <p>Mit dieser Website möchte ich meine Erfahrungen und Projekte teilen  von meinen ersten Schritten in der Programmierung bis hin zu anspruchsvollen Softwarelösungen.</p>
+    <section class="presentationindex fade-in" aria-labelledby="intro-title">
+        <h2 id="intro-title" class="sr-only" data-i18n="home.introTitle">Introduction</h2>
+        <p data-i18n="home.introP1">Hallo! Ich bin <strong>FRAID</strong>, Student der <strong>Angewandten Informatik</strong> an der <strong>Hochschule Worms</strong> und begeisterter Softwareentwickler. </p>
+        <p data-i18n="home.introP2">Mit dieser Website möchte ich meine Erfahrungen und Projekte teilen  von meinen ersten Schritten in der Programmierung bis hin zu anspruchsvollen Softwarelösungen.</p>
     </section>
     
-    <section class="competences fade-in">
-        <h2>💻 Mein Weg in der Entwicklung:</h2>
-        <p>Ich begann mit C und C++, bevor ich meine Kenntnisse auf moderne Technologien ausweitete. Heute arbeite ich an vielseitigen Projekten in verschiedenen Bereichen:</p>
+    <section class="competences fade-in" aria-labelledby="skills-title">
+        <h2 id="skills-title" data-i18n="home.skillsTitle">💻 Mein Weg in der Entwicklung:</h2>
+        <p data-i18n="home.skillsIntro">Ich begann mit C und C++, bevor ich meine Kenntnisse auf moderne Technologien ausweitete. Heute arbeite ich an vielseitigen Projekten in verschiedenen Bereichen:</p>
         <ul>
-            <li>🖥 <strong>Webentwicklung</strong> → HTML, CSS, JavaScript, Angular, Node.js</li>
-            <li>📱 <strong>Mobile Apps</strong> → Flutter, Firebase</li>
-            <li>💾 <strong>Grafische Benutzeroberflächen</strong> → PyQt6, TinyDB, Qt Designer</li>
-            <li>🔗 <strong>Back-End & Datenbanken</strong> → PostgreSQL, Express.js, Docker</li>
-            <li>🌍 <strong>IoT & Automatisierung</strong> → Raspberry Pi, MQTT, Tkinter</li>
+            <li data-i18n="home.skillWeb">🖥 <strong>Webentwicklung</strong> → HTML, CSS, JavaScript, Angular, Node.js</li>
+            <li data-i18n="home.skillMobile">📱 <strong>Mobile Apps</strong> → Flutter, Firebase</li>
+            <li data-i18n="home.skillGui">💾 <strong>Grafische Benutzeroberflächen</strong> → PyQt6, TinyDB, Qt Designer</li>
+            <li data-i18n="home.skillBackend">🔗 <strong>Back-End & Datenbanken</strong> → PostgreSQL, Express.js, Docker</li>
+            <li data-i18n="home.skillIoT">🌍 <strong>IoT & Automatisierung</strong> → Raspberry Pi, MQTT, Tkinter</li>
         </ul>
     </section>
     
-    <section class="objectif fade-in">
-        <h2>🔍 Warum diese Website?</h2>
-        <p>Dieses Portfolio dokumentiert meine <strong>Entwicklung</strong>, meine <strong>Lernprozesse</strong> und meine <strong>praktischen Projekte</strong>. Ob du einfach neugierig bist oder einen Entwickler für dein Projekt suchst – hier bist du genau richtig!</p>
+    <section class="objectif fade-in" aria-labelledby="why-title">
+        <h2 id="why-title" data-i18n="home.whyTitle">🔍 Warum diese Website?</h2>
+        <p data-i18n="home.whyP1">Dieses Portfolio dokumentiert meine <strong>Entwicklung</strong>, meine <strong>Lernprozesse</strong> und meine <strong>praktischen Projekte</strong>. Ob du einfach neugierig bist oder einen Entwickler für dein Projekt suchst – hier bist du genau richtig!</p>
     </section>
     
-    <section class="about-link fade-in">
-        <a href="about.html" class="btn">📌 Mehr über mich erfahren</a>
+    <section class="about-link fade-in" aria-label="Lien vers la page À propos">
+        <a href="about.html" class="btn" data-i18n="home.moreAbout">📌 Mehr über mich erfahren</a>
     </section>
-    
+    </main>
 
 </body>
 
-<footer>
-    <p>le footer</p>
+<footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4 data-i18n="footer.about">À propos</h4>
+            <p data-i18n="footer.aboutText">FRAID — Étudiant en informatique appliquée, passionné par le développement logiciel.</p>
+        </div>
+        <div class="footer-col">
+            <h4 data-i18n="footer.nav">Navigation</h4>
+            <ul>
+                <li><a href="about.html" data-i18n="footer.linkAbout">À propos</a></li>
+                <li><a href="projekts.html" data-i18n="footer.linkProjects">Projets</a></li>
+                <li><a href="kontakt.html" data-i18n="footer.linkContact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4 data-i18n="footer.contact">Contact</h4>
+            <p><span data-i18n="footer.email">Email</span>: <a href="mailto:fraid.dev@example.com">fraid.dev@example.com</a></p>
+            <div class="socials" aria-label="Réseaux sociaux">
+                <a href="https://github.com/FRAID0" target="_blank" rel="noopener" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.74.08-.74 1.21.09 1.85 1.25 1.85 1.25 1.07 1.84 2.8 1.31 3.48 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.64.24 2.86.12 3.16.77.84 1.24 1.91 1.24 3.22 0 4.62-2.8 5.65-5.48 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .5z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/wilfried-manfouo-fomekong-22b740283" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2H12c.53-1 1.83-2.2 3.76-2.2 4.02 0 4.76 2.64 4.76 6.08V24h-4v-6.67c0-1.59-.03-3.64-2.22-3.64-2.23 0-2.57 1.73-2.57 3.52V24h-4V8z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> FRAID. <span data-i18n="footer.rights">Tous droits réservés.</span></div>
 </footer>
 </html>
