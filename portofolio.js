@@ -192,10 +192,17 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.getElementById('primary-navigation');
+    const navigation = document.querySelector('.navigation');
     if (toggle && nav) {
         toggle.addEventListener('click', () => {
             const expanded = toggle.getAttribute('aria-expanded') === 'true';
             toggle.setAttribute('aria-expanded', (!expanded).toString());
+            // Ajouter/retirer une classe pour le CSS si :has() n'est pas supporté
+            if (expanded) {
+                if (navigation) navigation.classList.remove('nav-open');
+            } else {
+                if (navigation) navigation.classList.add('nav-open');
+            }
         });
     }
 
