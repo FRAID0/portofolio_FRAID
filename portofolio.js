@@ -85,9 +85,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 linkAbout: "Über mich",
                 linkProjects: "Projekte",
                 linkContact: "Kontakt",
+                linkNewPortfolio: "🚀 Neues optimiertes Portfolio",
                 contact: "Kontakt",
                 email: "E-Mail",
                 rights: "Alle Rechte vorbehalten."
+            },
+            newPortfolio: {
+                modalTitle: "🚀 Mein neues optimiertes Portfolio ist online!",
+                modalBody: "Ich habe ein neues, vollständig optimiertes Portfolio erstellt – mit verbesserter Performance, modernem Design und einer übersichtlicheren Darstellung meiner Projekte und Fähigkeiten. Schau es dir an!",
+                modalCta: "Neues Portfolio ansehen →",
+                modalClose: "Schließen",
+                modalNote: "Nach dem Schließen findest du den Link auch im Footer dieser Seite."
             }
         },
         fr: {
@@ -174,9 +182,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 linkAbout: "À propos",
                 linkProjects: "Projets",
                 linkContact: "Contact",
+                linkNewPortfolio: "🚀 Nouveau portfolio optimisé",
                 contact: "Contact",
                 email: "Email",
                 rights: "Tous droits réservés."
+            },
+            newPortfolio: {
+                modalTitle: "🚀 Mon nouveau portfolio optimisé est en ligne !",
+                modalBody: "J'ai créé un nouveau portfolio entièrement optimisé – avec de meilleures performances, un design moderne et une présentation plus claire de mes projets et compétences. Jetez-y un œil !",
+                modalCta: "Voir le nouveau portfolio →",
+                modalClose: "Fermer",
+                modalNote: "Après fermeture, vous retrouverez le lien dans le pied de page de ce site."
             }
         },
         en: {
@@ -263,9 +279,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 linkAbout: "About",
                 linkProjects: "Projects",
                 linkContact: "Contact",
+                linkNewPortfolio: "🚀 New optimised portfolio",
                 contact: "Contact",
                 email: "Email",
                 rights: "All rights reserved."
+            },
+            newPortfolio: {
+                modalTitle: "🚀 My new optimised portfolio is live!",
+                modalBody: "I have built a brand-new, fully optimised portfolio – with better performance, a modern design and a cleaner presentation of my projects and skills. Take a look!",
+                modalCta: "View new portfolio →",
+                modalClose: "Close",
+                modalNote: "After closing, you can find the link again in the footer of this page."
             }
         }
     };
@@ -401,6 +425,30 @@ document.addEventListener("DOMContentLoaded", function () {
     /* ─── Footer year ─── */
     const yearEl = document.getElementById('year');
     if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+
+    /* ─── New-portfolio modal ─── */
+    const newPortfolioModal = document.getElementById('new-portfolio-modal');
+    const newPortfolioCloseBtn = document.getElementById('npm-close');
+    if (newPortfolioModal) {
+        if (!localStorage.getItem('portfolio-modal-dismissed')) {
+            newPortfolioModal.removeAttribute('hidden');
+            newPortfolioModal.setAttribute('aria-hidden', 'false');
+        }
+        function dismissModal() {
+            newPortfolioModal.setAttribute('aria-hidden', 'true');
+            newPortfolioModal.setAttribute('hidden', '');
+            localStorage.setItem('portfolio-modal-dismissed', '1');
+        }
+        if (newPortfolioCloseBtn) {
+            newPortfolioCloseBtn.addEventListener('click', dismissModal);
+        }
+        newPortfolioModal.addEventListener('click', function (e) {
+            if (e.target === newPortfolioModal) { dismissModal(); }
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !newPortfolioModal.hasAttribute('hidden')) { dismissModal(); }
+        });
+    }
 
     /* ─── Carousel clone ─── */
     const track = document.querySelector(".carousel-track");
