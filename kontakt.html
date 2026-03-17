@@ -49,34 +49,39 @@
 
     <main id="main" role="main">
     <div class="contact-container">
-        <h1>Kontaktieren Sie mich.</h1>
+        <h1 data-i18n="contact.pageTitle">Kontaktieren Sie mich.</h1>
     
         <form id="comment-form">
-            <input type="email" id="email" placeholder="Ihre Email" required>
-            <input type="text" id="project" placeholder="Projekt, das Sie interessiert hat" required>
+            <input type="text" id="from-name" data-i18n-placeholder="contact.namePlaceholder" placeholder="Ihr Name">
+            <input type="email" id="email" data-i18n-placeholder="contact.emailPlaceholder" placeholder="Ihre E-Mail" required>
+            <input type="text" id="project" data-i18n-placeholder="contact.projectPlaceholder" placeholder="Projekt, das Sie interessiert hat" required>
     
-            <textarea id="public-comment" placeholder="Hinterlassen Sie einen öffentlichen Kommentar." required></textarea>
+            <textarea id="public-comment" data-i18n-placeholder="contact.commentPlaceholder" placeholder="Hinterlassen Sie einen öffentlichen Kommentar." required></textarea>
     
-            <button type="button" id="send-comment">Senden Sie den Kommentar</button>
+            <button type="button" id="send-comment" data-i18n-value="contact.sendComment">Kommentar senden</button>
+            <p id="comment-status" class="form-status" aria-live="polite"></p>
         </form>
     
         <div class="contact-question">
-            <p>Möchten Sie mich direkt kontaktieren?</p>
+            <p data-i18n="contact.contactQuestion">Möchten Sie mich direkt kontaktieren?</p>
             <label>
-                <input type="radio" name="contact-choice" value="ja"> ja
+                <input type="radio" name="contact-choice" value="ja"> <span data-i18n="contact.yes">ja</span>
             </label>
             <label>
-                <input type="radio" name="contact-choice" value="nein" checked> nein
+                <input type="radio" name="contact-choice" value="nein" checked> <span data-i18n="contact.no">nein</span>
             </label>
         </div>
     
         <form id="private-message-form" style="display: none;">
-            <textarea id="private-message" placeholder="Ihre E-Mail-Adresse, Telefonnummer (falls möglich), geben Sie an, ob Sie ein Unternehmen sind und verfassen Sie Ihre Nachricht."></textarea>
+            <input type="text" id="private-name" data-i18n-placeholder="contact.privateNamePlaceholder" placeholder="Ihr Name">
+            <input type="email" id="private-email" data-i18n-placeholder="contact.privateEmailPlaceholder" placeholder="Ihre E-Mail" required>
+            <textarea id="private-message" data-i18n-placeholder="contact.privateMessagePlaceholder" placeholder="Ihre Nachricht" required></textarea>
             
-            <button type="button" id="send-private-message">Senden Sie die private Nachricht.</button>
+            <button type="button" id="send-private-message" data-i18n-value="contact.sendPrivate">Private Nachricht senden</button>
+            <p id="private-status" class="form-status" aria-live="polite"></p>
         </form>
     
-        <h2>Kommentare der Besucher.</h2>
+        <h2 data-i18n="contact.commentsTitle">Kommentare der Besucher.</h2>
         <div id="comments-list"></div>
 
     </div>
