@@ -215,6 +215,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (val !== null) el.textContent = val;
         });
         phrases = dict.typing;
+        phraseIndex = 0;
+        charIndex = 0;
+        isDeleting = false;
     }
 
     /* ─── Typing animation ─── */
@@ -246,6 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
             charIndex--;
             if (charIndex < 0) {
                 isDeleting = false;
+                charIndex = 0;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
             }
         }
@@ -401,8 +405,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     showStatus(commentStatus, t.errorComment || "Commentaire enregistré, mais l'envoi par e-mail a échoué.", true);
                 });
             } else {
-                showStatus(commentStatus, t.successComment || "Votre commentaire a bien été envoyé !", false);
-                document.getElementById("comment-form").reset();
+                showStatus(commentStatus, t.errorComment || "Commentaire enregistré, mais l'envoi par e-mail a échoué.", true);
             }
         });
 
@@ -440,6 +443,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         sendPrivateMsgBtn.textContent = t.sendPrivate || "Envoyer le message privé";
                         showStatus(privateStatus, t.errorPrivate || "Erreur lors de l'envoi du message.", true);
                     });
+                } else {
+                    showStatus(privateStatus, t.errorPrivate || "Erreur lors de l'envoi du message.", true);
                 }
             });
         }
