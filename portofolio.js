@@ -319,7 +319,12 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!commentsList) return;
         const div = document.createElement("div");
         div.classList.add("comment");
-        div.innerHTML = `<strong>${comment.email}</strong> (Projet : ${comment.project})<br>${comment.message}`;
+        const strong = document.createElement("strong");
+        strong.textContent = comment.email;
+        const meta = document.createTextNode(` (Projet : ${comment.project})`);
+        const br = document.createElement("br");
+        const msg = document.createTextNode(comment.message);
+        div.append(strong, meta, br, msg);
         commentsList.prepend(div);
     }
 
