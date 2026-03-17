@@ -12,12 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
             ],
             nav: { home: "Home", about: "about", projects: "projects", contact: "kontakt" },
             link: { gotoProject: "Go to the Projekt" },
-            hero: {
-                greeting: "👋 Hallo, ich bin",
-                subtitle: "Student der Angewandten Informatik · Hochschule Worms",
-                cta: "Meine Projekte ansehen",
-                contact: "Kontakt aufnehmen"
-            },
             home: {
                 introTitle: "Introduction",
                 introP1: "Hallo! Ich bin <strong>FRAID</strong>, Student der <strong>Angewandten Informatik</strong> an der <strong>Hochschule Worms</strong> und begeisterter Softwareentwickler. ",
