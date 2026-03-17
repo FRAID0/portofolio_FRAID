@@ -51,13 +51,13 @@
 <main id="main" role="main">
 
     <section class="project" id="iot-sudoku">
-        <h2 class="project-title">IOT (Sudokuspiel)</h2>
+        <h2 class="project-title" data-i18n="projekts.iotTitle">IOT (Sudokuspiel)</h2>
         <div class="project-content">
             <div class="project-image">
                 <img src="images/IOT/WhatsApp Image 2025-02-09 at 12.45.20.jpeg" alt="Aperçu du projet">
             </div>
             <div class="project-info">
-                <p class="project-description">
+                <p class="project-description" data-i18n="projekts.iotDesc">
                     Entwicklung eines interaktiven Sudoku-Spiels mit Python und MQTT
 
 Erstellung eines Multiplayer-Sudoku-Spiels mit <strong>Python</strong>, das <strong>die MQTT-Protokollarchitektur</strong> für die Echtzeitkommunikation zwischen Spielern verwendet.
@@ -66,12 +66,12 @@ Gestaltung und Programmierung der Benutzeroberfläche mit <strong>Tkinter</stron
 Entwicklung eines Services zur Übertragung von Spielständen zwischen den Teilnehmern und zur Synchronisierung des Fortschritts in Echtzeit.
 Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, einschließlich Timer, Score-Tracking und Interaktionen zwischen den Spielern.
                 </p>
-                <button class="details-btn" onclick="toggleDetails(this)">Mehr anzeigen</button>
+                <button class="details-btn" onclick="toggleDetails(this)" data-i18n="projekts.showMore">Mehr anzeigen</button>
             </div>
         </div>
         <div class="project-details">
 
-            <h3>Verwendete Technologien und Fähigkeiten</h3>
+            <h3 data-i18n="projekts.techTitle">Verwendete Technologien und Fähigkeiten</h3>
             <ul class="tech-list">
                 <li>MQTT</li>
                 <li>TKINTER</li>
@@ -81,11 +81,11 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
             </ul>
         
             <p class="github-link">
-                <a href="https://github.com/FRAID0/sudoku" target="_blank" rel="noopener noreferrer">Das Projekt auf GitHub ansehen</a>
+                <a href="https://github.com/FRAID0/sudoku" target="_blank" rel="noopener noreferrer" data-i18n="projekts.viewOnGitHub">Das Projekt auf GitHub ansehen</a>
             </p>
         
-            <h3>Meine Arbeit an diesem Projekt</h3>
-            <p class="personal-contribution">
+            <h3 data-i18n="projekts.contribTitle">Meine Arbeit an diesem Projekt</h3>
+            <div class="personal-contribution" data-i18n="projekts.iotContrib">
                 Im Rahmen dieses Projekts zur Entwicklung eines interaktiven Sudoku-Spiels war ich maßgeblich an der Erstellung der Spiel-Logik, der Benutzeroberfläche (UI) und der Integration des Echtzeit-Kommunikationssystems über das MQTT-Protokoll beteiligt.
                 Hier ist eine detaillierte Übersicht über meine wichtigsten Beiträge:
                 <p><strong>1. Entwicklung der Sudoku-Spiel-Logik</strong><br>
@@ -139,8 +139,8 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
                 
                 <p>Durch die Integration von Multiplayer-Funktionen mit MQTT konnte ich ein flüssiges und immersives Spielerlebnis bieten und gleichzeitig eine perfekte Synchronisation der Aktionen der Spieler sicherstellen. Dieses Projekt ist eine ausgezeichnete Gelegenheit, meine Fähigkeiten in der Softwareentwicklung und im Projektmanagement zu demonstrieren.</p>
             
-        </p>
-            <h3>Projektmedien</h3>
+        </div>
+            <h3 data-i18n="projekts.mediaTitle">Projektmedien</h3>
         <div class="project-media swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -164,19 +164,19 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
                 <div class="swiper-slide">
                     <video controls>
                         <source src="images/IOT/IMG_7359.MP4" type="video/mp4">
-                        Ihr Browser unterstützt das Video nicht.
+                        <span data-i18n="projekts.videoNotSupported">Ihr Browser unterstützt das Video nicht.</span>
                     </video>
                 </div>
                 <div class="swiper-slide">
                     <video controls>
                         <source src="images/IOT/video_2025-02-10_17-15-45.mp4" type="video/mp4">
-                        Ihr Browser unterstützt das Video nicht.
+                        <span data-i18n="projekts.videoNotSupported">Ihr Browser unterstützt das Video nicht.</span>
                     </video>
                 </div>                
                 <div class="swiper-slide">
                     <video controls>
                         <source src="images/IOT/IMG_7360.MP4" type="video/mp4">
-                        Ihr Browser unterstützt das Video nicht.
+                        <span data-i18n="projekts.videoNotSupported">Ihr Browser unterstützt das Video nicht.</span>
                     </video>
                 </div>                
             </div>
@@ -186,19 +186,19 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
         </div>
         
 
-            <button class="close-btn" onclick="closeDetails(this)">Schließen</button>
+            <button class="close-btn" onclick="closeDetails(this)" data-i18n="projekts.close">Schließen</button>
         </div>
     </section>
     
     
     <section class="project" id="Webentwicklung">
-        <h2 class="project-title">  Webentwicklung (DriveDeal)</h2>
+        <h2 class="project-title" data-i18n="projekts.webTitle">Webentwicklung (DriveDeal)</h2>
         <div class="project-content">
             <div class="project-image">
                 <img src="images/WEB/starseiteweb.PNG" alt="Aperçu du projet">
             </div>
             <div class="project-info">
-                <p class="project-description">
+                <p class="project-description" data-i18n="projekts.webDesc">
                     Deal Drive ist eine interaktive Webseite, die mit <strong>HTML, CSS und JavaScript</strong> entwickelt wurde.
                     Sie ermöglicht es den Nutzern, ein individuelles Fahrzeug zu konfigurieren, indem sie verschiedene
                     Teile wie Räder, Karosserie und Türen auswählen. Jede Auswahl beeinflusst sowohl das Erscheinungsbild
@@ -209,12 +209,12 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
                     Durch dieses Projekt konnten wir die <strong>dynamische Verwaltung von UI-Elementen</strong> , die Interaktivität mit JavaScript
                     sowie die Echtzeit-Aktualisierung von Konfigurationen und Preisen erproben.
                 </p>
-                <button class="details-btn" onclick="toggleDetails(this)">Mehr anzeigen</button>
+                <button class="details-btn" onclick="toggleDetails(this)" data-i18n="projekts.showMore">Mehr anzeigen</button>
             </div>
         </div>
         <div class="project-details">
 
-            <h3>Verwendete Technologien und Fähigkeiten</h3>
+            <h3 data-i18n="projekts.techTitle">Verwendete Technologien und Fähigkeiten</h3>
             <ul class="tech-list">
                 <li>HTML</li>
                 <li>CSS</li>
@@ -223,11 +223,11 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
             </ul>
         
             <p class="github-link">
-                <a href="https://github.com/FRAID0/Webentwiklung" target="_blank" rel="noopener noreferrer">Das Projekt auf GitHub ansehen</a>
+                <a href="https://github.com/FRAID0/Webentwiklung" target="_blank" rel="noopener noreferrer" data-i18n="projekts.viewOnGitHub">Das Projekt auf GitHub ansehen</a>
             </p>
         
-            <h3>Meine Arbeit an diesem Projekt</h3>
-            <p class="personal-contribution">
+            <h3 data-i18n="projekts.contribTitle">Meine Arbeit an diesem Projekt</h3>
+            <div class="personal-contribution" data-i18n="projekts.webContrib">
             <p><strong>Meine Rolle – Bezahlen-Seite (Warenkorb) – Projekt Deal Drive</strong></p>
 
             <p>Im Rahmen des <strong>Deal Drive</strong>-Projekts war ich für die Entwicklung der <strong>Bezahlen-Seite</strong> (Warenkorb) verantwortlich, die den Kaufprozess abschließt. Nachdem der Benutzer sein Fahrzeug nach seinen Wünschen konfiguriert hatte, wurde er auf diese Seite weitergeleitet, um eine Zahlungsmethode auszuwählen und die Bestellung abzuschließen.</p>
@@ -245,9 +245,9 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
             
             <p>Dieses Modul ermöglichte es mir, <strong>Echtzeit-Datenvalidierung</strong> und eine <strong>dynamische Bedingungslogik</strong> zu implementieren, um eine intuitive und sichere Benutzererfahrung zu gewährleisten.</p>
             
-            </p>
+            </div>
         
-            <h3>Projektmedien</h3>
+            <h3 data-i18n="projekts.mediaTitle">Projektmedien</h3>
         <div class="project-media swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -256,7 +256,7 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
                 <!-- <div class="swiper-slide">
                     <video controls>
                         <source src="images/IOT/IMG_7359.MP4" type="video/mp4">
-                        Ihr Browser unterstützt das Video nicht.
+                        <span data-i18n="projekts.videoNotSupported">Ihr Browser unterstützt das Video nicht.</span>
                     </video>
                 </div>             -->
             </div>
@@ -266,28 +266,28 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
         </div>
         
 
-            <button class="close-btn" onclick="closeDetails(this)">Schließen</button>
+            <button class="close-btn" onclick="closeDetails(this)" data-i18n="projekts.close">Schließen</button>
         </div>
     </section>
 
     <section class="project" id="TOP">
-        <h2 class="project-title">TOP – TeamOrientesProjekt – Workshop-Management</h2>
+        <h2 class="project-title" data-i18n="projekts.topTitle">TOP – TeamOrientesProjekt – Workshop-Management</h2>
         <div class="project-content">
             <div class="project-image">
                 <img src="images/TOP/WhatsApp Image 2025-03-31 at 22.59.46.jpeg" alt="Aperçu du projet">
             </div>
             <div class="project-info">
-                <p class="project-description">
+                <p class="project-description" data-i18n="projekts.topDesc">
                     Entwicklung einer Full-Stack-Webanwendung zur vollständigen Verwaltung des Workshop-Prozesses im Rahmen des Projekts TOP. 
                     Das System deckt den gesamten Ablauf ab – von der anfänglichen Anfrage der Schulen über die Genehmigung bis zur Veröffentlichung – 
                     und ermöglicht den Mitgliedern eine interaktive Bewerbung.
                 </p>
-                <button class="details-btn" onclick="toggleDetails(this)">Mehr anzeigen</button>
+                <button class="details-btn" onclick="toggleDetails(this)" data-i18n="projekts.showMore">Mehr anzeigen</button>
             </div>
         </div>
         <div class="project-details">
 
-            <h3>Verwendete Technologien und Fähigkeiten</h3>
+            <h3 data-i18n="projekts.techTitle">Verwendete Technologien und Fähigkeiten</h3>
             <ul class="tech-list">
                 <li>Node.js</li>
                 <li>Express</li>
@@ -298,11 +298,11 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
             </ul>
         
             <p class="github-link">
-                <a href="https://www.linkedin.com/posts/wilfried-manfouo-fomekong-22b740283_projekt-top-team-global-workshop-management-activity-7312848542128037889-mxJl?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAET8iUMBLD09P71Y7Sl08ZeVn-eF_s2pip0" target="_blank" rel="noopener noreferrer">Das Projekt auf Linkeldin ansehen</a>
+                <a href="https://www.linkedin.com/posts/wilfried-manfouo-fomekong-22b740283_projekt-top-team-global-workshop-management-activity-7312848542128037889-mxJl?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAET8iUMBLD09P71Y7Sl08ZeVn-eF_s2pip0" target="_blank" rel="noopener noreferrer" data-i18n="projekts.viewOnLinkedIn">Das Projekt auf LinkedIn ansehen</a>
             </p>
         
-            <h3>Meine Arbeit an diesem Projekt</h3>
-            <p class="personal-contribution">
+            <h3 data-i18n="projekts.contribTitle">Meine Arbeit an diesem Projekt</h3>
+            <div class="personal-contribution" data-i18n="projekts.topContrib">
                 <p><strong>Mein persönlicher Beitrag:</strong></p>
 
                 <p><strong>1. Backend und Datenbank:</strong><br>
@@ -314,9 +314,9 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
                 
                 <p><strong>3. Cloud-Deployment:</strong><br>
                 Einrichtung einer CI/CD-Pipeline und Deployment der Anwendung auf einer AWS EC2-Instanz.</p>
-            </p>
+            </div>
         
-            <h3>Projektmedien</h3>
+            <h3 data-i18n="projekts.mediaTitle">Projektmedien</h3>
             <div class="project-media swiper mySwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -334,7 +334,7 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
                     <div class="swiper-slide">
                         <video controls>
                             <source src="images/TOP/WhatsApp Video 2025-03-31 at 22.59.48.mp4" type="video/mp4">
-                            Ihr Browser unterstützt das Video nicht.
+                            <span data-i18n="projekts.videoNotSupported">Ihr Browser unterstützt das Video nicht.</span>
                         </video>
                     </div>
                 </div>
@@ -343,7 +343,7 @@ Verwendung von <strong>Python-Threads</strong>  zur Steuerung des Spielablaufs, 
                 <div class="swiper-pagination"></div>
             </div>
         
-            <button class="close-btn" onclick="closeDetails(this)">Schließen</button>
+            <button class="close-btn" onclick="closeDetails(this)" data-i18n="projekts.close">Schließen</button>
         </div>
     </section>
 
