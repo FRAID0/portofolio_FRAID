@@ -79,15 +79,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 topContrib: "<p><strong>Mein persönlicher Beitrag:</strong></p><p><strong>1. Backend und Datenbank:</strong><br>Administration und Einrichtung der PostgreSQL-Datenbank in einem Backend-Container. Entwicklung von REST-Endpunkten mit Node.js, Express und dem ORM Sequelize.</p><p><strong>2. Frontend und Integration:</strong><br>Konzeption und Implementierung von Frontend-Services zur Anzeige von Profilen sowie zur Realisierung der Dokumenten-Upload-Funktionalität.</p><p><strong>3. Cloud-Deployment:</strong><br>Einrichtung einer CI/CD-Pipeline und Deployment der Anwendung auf einer AWS EC2-Instanz.</p>"
             },
             footer: {
-                about: "À propos",
-                aboutText: "FRAID — Étudiant en informatique appliquée, passionné par le développement logiciel.",
+                about: "Über mich",
+                aboutText: "FRAID — Student der Angewandten Informatik, begeistert von Softwareentwicklung.",
                 nav: "Navigation",
-                linkAbout: "À propos",
-                linkProjects: "Projets",
-                linkContact: "Contact",
-                contact: "Contact",
-                email: "Email",
-                rights: "Tous droits réservés."
+                linkAbout: "Über mich",
+                linkProjects: "Projekte",
+                linkContact: "Kontakt",
+                contact: "Kontakt",
+                email: "E-Mail",
+                rights: "Alle Rechte vorbehalten."
             }
         },
         fr: {
@@ -324,7 +324,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
         document.documentElement.lang = lang;
-        phrases = dict.typing || phrases;
         phrases = dict.typing;
         phraseIndex = 0;
         charIndex = 0;
