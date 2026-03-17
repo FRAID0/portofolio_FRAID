@@ -282,6 +282,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 const comment = { email, project, message: publicComment };
                 saveComment(comment);
                 displayComment(comment);
+                if (typeof emailjs !== 'undefined') {
+                    emailjs.send("service_m282g53", "template_wh3zu2k", {
+                        email,
+                        project,
+                        message: publicComment
+                    }).then(function () {
+                        alert("Votre commentaire a bien été envoyé !");
+                    }).catch(function () {
+                        alert("Commentaire enregistré, mais l'envoi par e-mail a échoué.");
+                    });
+                }
             } else {
                 alert("Veuillez remplir tous les champs.");
             }
