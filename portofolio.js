@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let vorstellung = document.getElementById("typing");
+    /* ─── i18n dictionaries ─── */
     const dictionaries = {
         de: {
             typing: [
@@ -53,16 +53,16 @@ document.addEventListener("DOMContentLoaded", function () {
             home: {
                 introTitle: "Introduction",
                 introP1: "Bonjour ! Je suis <strong>FRAID</strong>, étudiant en <strong>informatique appliquée</strong> à la <strong>Hochschule Worms</strong> et passionné de développement logiciel.",
-                introP2: "Avec ce site, je partage mes expériences et projets – de mes débuts en programmation jusqu’à des solutions logicielles avancées.",
+                introP2: "Avec ce site, je partage mes expériences et projets – de mes débuts en programmation jusqu'à des solutions logicielles avancées.",
                 skillsTitle: "💻 Mon parcours en développement :",
-                skillsIntro: "J’ai commencé avec le C et le C++, puis j’ai étendu mes compétences vers des technologies modernes. Aujourd’hui je travaille sur des projets variés :",
+                skillsIntro: "J'ai commencé avec le C et le C++, puis j'ai étendu mes compétences vers des technologies modernes. Aujourd'hui je travaille sur des projets variés :",
                 skillWeb: "🖥 <strong>Développement Web</strong> → HTML, CSS, JavaScript, Angular, Node.js",
                 skillMobile: "📱 <strong>Applications Mobile</strong> → Flutter, Firebase",
                 skillGui: "💾 <strong>Interfaces Graphiques</strong> → PyQt6, TinyDB, Qt Designer",
                 skillBackend: "🔗 <strong>Back‑End & Bases</strong> → PostgreSQL, Express.js, Docker",
                 skillIoT: "🌍 <strong>IoT & Automatisation</strong> → Raspberry Pi, MQTT, Tkinter",
                 whyTitle: "🔍 Pourquoi ce site ?",
-                whyP1: "Ce portfolio documente mon <strong>évolution</strong>, mes <strong>apprentissages</strong> et mes <strong>projets pratiques</strong>. Que vous soyez curieux ou en recherche d’un développeur – vous êtes au bon endroit !",
+                whyP1: "Ce portfolio documente mon <strong>évolution</strong>, mes <strong>apprentissages</strong> et mes <strong>projets pratiques</strong>. Que vous soyez curieux ou en recherche d'un développeur – vous êtes au bon endroit !",
                 moreAbout: "📌 En savoir plus sur moi"
             },
             footer: {
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 skillBackend: "🔗 <strong>Back‑End & Databases</strong> → PostgreSQL, Express.js, Docker",
                 skillIoT: "🌍 <strong>IoT & Automation</strong> → Raspberry Pi, MQTT, Tkinter",
                 whyTitle: "🔍 Why this website?",
-                whyP1: "This portfolio documents my <strong>development</strong>, <strong>learning</strong> and <strong>hands‑on projects</strong>. Whether you’re curious or looking for a developer – you’re in the right place!",
+                whyP1: "This portfolio documents my <strong>development</strong>, <strong>learning</strong> and <strong>hands‑on projects</strong>. Whether you're curious or looking for a developer – you're in the right place!",
                 moreAbout: "📌 Learn more about me"
             },
             footer: {
@@ -117,45 +117,47 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    /* ─── Language helpers ─── */
     function getLang() { return localStorage.getItem('lang') || 'de'; }
     function setLang(lang) { localStorage.setItem('lang', lang); }
 
     function applyTranslations(lang) {
         const dict = dictionaries[lang];
+        if (!dict) return;
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const path = el.getAttribute('data-i18n');
             const keys = path.split('.');
             let node = dict;
             for (const k of keys) { node = node && node[k]; }
             if (typeof node === 'string') {
-                // Permet du HTML dans certaines chaînes (strong)
                 el.innerHTML = node;
             }
         });
         phrases = dict.typing;
     }
 
+    /* ─── Typing animation ─── */
+    const vorstellung = document.getElementById("typing");
     let phrases = dictionaries[getLang()].typing;
-
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    const speed = 100; 
-    const eraseSpeed = 50; 
-    const delayBetweenPhrases = 1500; 
-    let colors = ["green", "blue", "red", "purple","pink","black"];
+    const speed = 100;
+    const eraseSpeed = 50;
+    const delayBetweenPhrases = 1500;
+    const colors = ["green", "blue", "red", "purple", "pink", "black"];
 
     function typeWriter() {
-        let currentPhrase = phrases[phraseIndex];
-        
+        if (!vorstellung) return;
+        const currentPhrase = phrases[phraseIndex];
         if (!isDeleting) {
             vorstellung.innerText = currentPhrase.substring(0, charIndex);
-            vorstellung.classList.add("texteAnime")
-            vorstellung.style.color = colors[phraseIndex];
+            vorstellung.classList.add("texteAnime");
+            vorstellung.style.color = colors[phraseIndex % colors.length];
             charIndex++;
             if (charIndex > currentPhrase.length) {
                 isDeleting = true;
-                setTimeout(typeWriter, delayBetweenPhrases); 
+                setTimeout(typeWriter, delayBetweenPhrases);
                 return;
             }
         } else {
@@ -163,17 +165,15 @@ document.addEventListener("DOMContentLoaded", function () {
             charIndex--;
             if (charIndex < 0) {
                 isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length; 
+                phraseIndex = (phraseIndex + 1) % phrases.length;
             }
         }
-
-
         setTimeout(typeWriter, isDeleting ? eraseSpeed : speed);
     }
 
-    typeWriter(); 
+    if (vorstellung) { typeWriter(); }
 
-    // Lang switcher
+    /* ─── Language switcher ─── */
     const langSelect = document.getElementById('lang-select');
     if (langSelect) {
         langSelect.value = getLang();
@@ -186,10 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         applyTranslations(getLang());
     }
-});
 
-// Navigation burger et année dans le footer
-document.addEventListener("DOMContentLoaded", function () {
+    /* ─── Burger menu ─── */
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.getElementById('primary-navigation');
     const navigation = document.querySelector('.navigation');
@@ -197,7 +195,6 @@ document.addEventListener("DOMContentLoaded", function () {
         toggle.addEventListener('click', () => {
             const expanded = toggle.getAttribute('aria-expanded') === 'true';
             toggle.setAttribute('aria-expanded', (!expanded).toString());
-            // Ajouter/retirer une classe pour le CSS si :has() n'est pas supporté
             if (expanded) {
                 if (navigation) navigation.classList.remove('nav-open');
             } else {
@@ -206,46 +203,27 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    /* ─── Footer year ─── */
     const yearEl = document.getElementById('year');
     if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
-});
 
-
-
-
-function flipCard(element) {
-    element.classList.add("flipped");
-
-    setTimeout(() => {
-        element.classList.remove("flipped");
-    }, 3000); 
-}
-
-
-document.addEventListener("DOMContentLoaded", function () {
+    /* ─── Carousel clone ─── */
     const track = document.querySelector(".carousel-track");
+    if (track) {
+        track.innerHTML += track.innerHTML;
+    }
 
-    let clones = track.innerHTML;
-    track.innerHTML += clones; 
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const elements = document.querySelectorAll(".fade-in");
-
-    elements.forEach((el, index) => {
+    /* ─── Fade-in sections ─── */
+    const fadeEls = document.querySelectorAll(".fade-in");
+    fadeEls.forEach((el, index) => {
         setTimeout(() => {
             el.style.opacity = 1;
             el.style.transform = "translateY(0)";
         }, index * 300);
     });
-});
 
-
-
-document.addEventListener("DOMContentLoaded", function () {
+    /* ─── Scroll reveal for projects ─── */
     const projects = document.querySelectorAll(".project");
-
     function revealProjects() {
         projects.forEach((project) => {
             const position = project.getBoundingClientRect().top;
@@ -256,95 +234,80 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-
-    window.addEventListener("scroll", revealProjects);
-    revealProjects();
-});
-
-
-function toggleDetails(button) {
-    let details = button.parentElement.parentElement.nextElementSibling;
-
-    if (!details.classList.contains("show")) {
-        details.style.maxHeight = details.scrollHeight + "px"; 
-        details.style.opacity = "1";
-        details.classList.add("show");
-        button.textContent = "weniger anzeigen";
-    } else {
-        details.style.maxHeight = "0"; 
-        details.style.opacity = "0";
-        details.classList.remove("show");
-        button.textContent = "Mehr anzeigen";
+    if (projects.length) {
+        window.addEventListener("scroll", revealProjects);
+        revealProjects();
     }
-}
 
-function closeDetails(button) {
-    let details = button.parentElement;
-    let mainButton = details.previousElementSibling.querySelector(".details-btn");
+    /* ─── Swiper (projects page only) ─── */
+    if (typeof Swiper !== 'undefined' && document.querySelector(".mySwiper")) {
+        new Swiper(".mySwiper", {
+            loop: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    }
 
-    details.style.maxHeight = "0";
-    details.style.opacity = "0";
-    details.classList.remove("show");
-    mainButton.textContent = "Afficher plus";
-}
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    var swiper = new Swiper(".mySwiper", {
-        loop: true, 
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-    });
-});
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
+    /* ─── Contact form (contact page only) ─── */
     const sendCommentBtn = document.getElementById("send-comment");
     const sendPrivateMsgBtn = document.getElementById("send-private-message");
     const commentsList = document.getElementById("comments-list");
     const privateMessageForm = document.getElementById("private-message-form");
     const contactChoices = document.getElementsByName("contact-choice");
 
-    // Initialise EmailJS
-    emailjs.init("WjR0gy-0XG0CaBQgL"); 
+    if (sendCommentBtn && commentsList) {
+        if (typeof emailjs !== 'undefined') {
+            emailjs.init("WjR0gy-0XG0CaBQgL");
+        }
 
-    contactChoices.forEach(choice => {
-        choice.addEventListener("change", function () {
-            if (this.value === "ja") {
-                privateMessageForm.style.display = "block";
+        contactChoices.forEach(choice => {
+            choice.addEventListener("change", function () {
+                if (privateMessageForm) {
+                    privateMessageForm.style.display = this.value === "ja" ? "block" : "none";
+                }
+            });
+        });
+
+        sendCommentBtn.addEventListener("click", function () {
+            const email = document.getElementById("email").value;
+            const project = document.getElementById("project").value;
+            const publicComment = document.getElementById("public-comment").value;
+            if (email && project && publicComment) {
+                const comment = { email, project, message: publicComment };
+                saveComment(comment);
+                displayComment(comment);
             } else {
-                privateMessageForm.style.display = "none";
+                alert("Veuillez remplir tous les champs.");
             }
         });
-    });
 
-    sendCommentBtn.addEventListener("click", function () {
-        const email = document.getElementById("email").value;
-        const project = document.getElementById("project").value;
-        const publicComment = document.getElementById("public-comment").value;
-
-        if (email && project && publicComment) {
-            const comment = { email, project, message: publicComment };
-            saveComment(comment);
-            displayComment(comment);
-        } else {
-            alert("Veuillez remplir tous les champs.");
+        if (sendPrivateMsgBtn) {
+            sendPrivateMsgBtn.addEventListener("click", function () {
+                const privateMessage = document.getElementById("private-message").value;
+                if (!privateMessage.trim()) {
+                    alert("Veuillez rédiger un message avant d'envoyer.");
+                    return;
+                }
+                if (typeof emailjs !== 'undefined') {
+                    emailjs.send("service_m282g53", "template_wh3zu2k", {
+                        message: privateMessage
+                    }).then(function () {
+                        alert("Votre message a bien été envoyé !");
+                    }).catch(function () {
+                        alert("Erreur lors de l'envoi du message.");
+                    });
+                }
+            });
         }
-    });
+
+        loadComments();
+    }
 
     function saveComment(comment) {
         let comments = JSON.parse(localStorage.getItem("comments")) || [];
@@ -353,100 +316,54 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function displayComment(comment) {
+        if (!commentsList) return;
         const div = document.createElement("div");
         div.classList.add("comment");
-        div.innerHTML = `<strong>${comment.email}</strong> (Projet : ${comment.project})<br>${comment.message}`;
+        const strong = document.createElement("strong");
+        strong.textContent = comment.email;
+        const meta = document.createTextNode(` (Projet : ${comment.project})`);
+        const br = document.createElement("br");
+        const msg = document.createTextNode(comment.message);
+        div.append(strong, meta, br, msg);
         commentsList.prepend(div);
     }
 
-    // Fonction pour envoyer un message privé par EmailJS
-    sendPrivateMsgBtn.addEventListener("click", function () {
-        const privateMessage = document.getElementById("private-message").value;
-
-        if (privateMessage.trim() === "") {
-            alert("Veuillez rédiger un message avant d'envoyer.");
-            return;
-        }
-
-        emailjs.send("service_m282g53", "template_wh3zu2k", {
-            message: privateMessage
-        }).then(function () {
-            alert("Votre message a bien été envoyé !");
-        }).catch(function () {
-            alert("Erreur lors de l'envoi du message.");
-        });
-    });
-
-    // Charger les commentaires au chargement de la page
-    loadComments();
-
     function loadComments() {
-        let comments = JSON.parse(localStorage.getItem("comments")) || [];
+        const comments = JSON.parse(localStorage.getItem("comments")) || [];
         comments.forEach(displayComment);
     }
 });
 
+/* ─── Card flip (used via inline onclick) ─── */
+function flipCard(element) {
+    element.classList.add("flipped");
+    setTimeout(() => {
+        element.classList.remove("flipped");
+    }, 3000);
+}
 
+/* ─── Project details toggle (used via inline onclick) ─── */
+function toggleDetails(button) {
+    const details = button.parentElement.parentElement.nextElementSibling;
+    if (!details) return;
+    if (!details.classList.contains("show")) {
+        details.style.maxHeight = details.scrollHeight + "px";
+        details.style.opacity = "1";
+        details.classList.add("show");
+        button.textContent = "weniger anzeigen";
+    } else {
+        details.style.maxHeight = "0";
+        details.style.opacity = "0";
+        details.classList.remove("show");
+        button.textContent = "Mehr anzeigen";
+    }
+}
 
-
-
-
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const form = document.getElementById("comment-form");
-//     const commentsList = document.getElementById("comments-list");
-
-//     // Initialise EmailJS
-//     emailjs.init("WjR0gy-0XG0CaBQgL"); // Remplace par ton User ID EmailJS
-
-//     // Charger les commentaires stockés localement
-//     loadComments();
-
-//     // Soumission du formulaire
-//     form.addEventListener("submit", function (event) {
-//         event.preventDefault();
-        
-//         const email = document.getElementById("email").value;
-//         const project = document.getElementById("project").value;
-//         const message = document.getElementById("message").value;
-
-//         if (email && project && message) {
-//             const comment = { email, project, message };
-//             saveComment(comment);
-//             displayComment(comment);
-//             sendEmail(comment);
-//             form.reset();
-//         }
-//     });
-
-//     function saveComment(comment) {
-//         let comments = JSON.parse(localStorage.getItem("comments")) || [];
-//         comments.push(comment);
-//         localStorage.setItem("comments", JSON.stringify(comments));
-//     }
-
-//     function loadComments() {
-//         let comments = JSON.parse(localStorage.getItem("comments")) || [];
-//         comments.forEach(displayComment);
-//     }
-
-//     function displayComment(comment) {
-//         const div = document.createElement("div");
-//         div.classList.add("comment");
-//         div.innerHTML = `<strong>${comment.email}</strong> (projet : ${comment.project}) <br> ${comment.message}`;
-//         commentsList.prepend(div); 
-//     }
-
-//     function sendEmail(comment) {
-//         emailjs.send("service_m282g53", "template_wh3zu2k", {
-//             email: comment.email,
-//             project: comment.project,
-//             message: comment.message
-//         }).then(function(response) {
-//             alert("Email envoyé avec succès !");
-//         }, function(error) {
-//             alert("Erreur lors de l'envoi de l'email.");
-//         });
-//     }
-// });
+function closeDetails(button) {
+    const details = button.parentElement;
+    const mainButton = details.previousElementSibling && details.previousElementSibling.querySelector(".details-btn");
+    details.style.maxHeight = "0";
+    details.style.opacity = "0";
+    details.classList.remove("show");
+    if (mainButton) { mainButton.textContent = "Mehr anzeigen"; }
+}
