@@ -32,8 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorComment: "Kommentar gespeichert, aber der E-Mail-Versand ist fehlgeschlagen.",
                 successPrivate: "Ihre Nachricht wurde erfolgreich gesendet!",
                 errorPrivate: "Fehler beim Senden der Nachricht.",
-                fillAll: "Bitte füllen Sie alle Felder aus.",
-                writeMessage: "Bitte verfassen Sie eine Nachricht, bevor Sie senden."
+                fillAll: "Bitte füllen Sie die Pflichtfelder aus.",
+                writeMessage: "Bitte verfassen Sie eine Nachricht, bevor Sie senden.",
+                privateProject: "Private Nachricht"
             },
             home: {
                 introTitle: "Introduction",
@@ -93,8 +94,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorComment: "Commentaire enregistré, mais l'envoi par e-mail a échoué.",
                 successPrivate: "Votre message a bien été envoyé !",
                 errorPrivate: "Erreur lors de l'envoi du message.",
-                fillAll: "Veuillez remplir tous les champs.",
-                writeMessage: "Veuillez rédiger un message avant d'envoyer."
+                fillAll: "Veuillez remplir les champs obligatoires.",
+                writeMessage: "Veuillez rédiger un message avant d'envoyer.",
+                privateProject: "Message privé"
             },
             home: {
                 introTitle: "Introduction",
@@ -154,8 +156,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 errorComment: "Comment saved, but email sending failed.",
                 successPrivate: "Your message has been sent successfully!",
                 errorPrivate: "Error sending the message.",
-                fillAll: "Please fill in all fields.",
-                writeMessage: "Please write a message before sending."
+                fillAll: "Please fill in the required fields.",
+                writeMessage: "Please write a message before sending.",
+                privateProject: "Private message"
             },
             home: {
                 introTitle: "Introduction",
@@ -372,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 showStatus(commentStatus, t.fillAll || "Veuillez remplir tous les champs.", true);
                 return;
             }
-            const comment = { email: fromName ? fromName + " <" + email + ">" : email, project, message: publicComment };
+            const comment = { from: fromName ? fromName + " <" + email + ">" : email, project, message: publicComment };
             saveComment(comment);
             displayComment(comment);
 
@@ -423,7 +426,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         from_name: privateName || privateEmail,
                         reply_to: privateEmail,
                         email: privateEmail,
-                        project: "Message privé",
+                        project: t.privateProject || "Message privé",
                         message: privateMessage
                     }).then(function () {
                         sendPrivateMsgBtn.disabled = false;
@@ -455,7 +458,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const div = document.createElement("div");
         div.classList.add("comment");
         const strong = document.createElement("strong");
-        strong.textContent = comment.email;
+        strong.textContent = comment.from || comment.email;
         const meta = document.createTextNode(` (Projet : ${comment.project})`);
         const br = document.createElement("br");
         const msg = document.createTextNode(comment.message);
