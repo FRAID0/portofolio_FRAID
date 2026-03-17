@@ -12,6 +12,29 @@ document.addEventListener("DOMContentLoaded", function () {
             ],
             nav: { home: "Home", about: "about", projects: "projects", contact: "kontakt" },
             link: { gotoProject: "Go to the Projekt" },
+            contact: {
+                pageTitle: "Kontaktieren Sie mich.",
+                namePlaceholder: "Ihr Name",
+                emailPlaceholder: "Ihre E-Mail",
+                projectPlaceholder: "Projekt, das Sie interessiert hat",
+                commentPlaceholder: "Hinterlassen Sie einen öffentlichen Kommentar.",
+                sendComment: "Kommentar senden",
+                contactQuestion: "Möchten Sie mich direkt kontaktieren?",
+                yes: "ja",
+                no: "nein",
+                privateNamePlaceholder: "Ihr Name",
+                privateEmailPlaceholder: "Ihre E-Mail",
+                privateMessagePlaceholder: "Ihre Nachricht",
+                sendPrivate: "Private Nachricht senden",
+                commentsTitle: "Kommentare der Besucher.",
+                sending: "Senden…",
+                successComment: "Ihr Kommentar wurde erfolgreich gesendet!",
+                errorComment: "Kommentar gespeichert, aber der E-Mail-Versand ist fehlgeschlagen.",
+                successPrivate: "Ihre Nachricht wurde erfolgreich gesendet!",
+                errorPrivate: "Fehler beim Senden der Nachricht.",
+                fillAll: "Bitte füllen Sie alle Felder aus.",
+                writeMessage: "Bitte verfassen Sie eine Nachricht, bevor Sie senden."
+            },
             home: {
                 introTitle: "Introduction",
                 introP1: "Hallo! Ich bin <strong>FRAID</strong>, Student der <strong>Angewandten Informatik</strong> an der <strong>Hochschule Worms</strong> und begeisterter Softwareentwickler. ",
@@ -50,6 +73,29 @@ document.addEventListener("DOMContentLoaded", function () {
             ],
             nav: { home: "Accueil", about: "À propos", projects: "Projets", contact: "Contact" },
             link: { gotoProject: "Voir le projet" },
+            contact: {
+                pageTitle: "Contactez-moi.",
+                namePlaceholder: "Votre nom",
+                emailPlaceholder: "Votre e-mail",
+                projectPlaceholder: "Projet qui vous a intéressé",
+                commentPlaceholder: "Laissez un commentaire public.",
+                sendComment: "Envoyer le commentaire",
+                contactQuestion: "Souhaitez-vous me contacter directement ?",
+                yes: "oui",
+                no: "non",
+                privateNamePlaceholder: "Votre nom",
+                privateEmailPlaceholder: "Votre e-mail",
+                privateMessagePlaceholder: "Votre message",
+                sendPrivate: "Envoyer le message privé",
+                commentsTitle: "Commentaires des visiteurs.",
+                sending: "Envoi…",
+                successComment: "Votre commentaire a bien été envoyé !",
+                errorComment: "Commentaire enregistré, mais l'envoi par e-mail a échoué.",
+                successPrivate: "Votre message a bien été envoyé !",
+                errorPrivate: "Erreur lors de l'envoi du message.",
+                fillAll: "Veuillez remplir tous les champs.",
+                writeMessage: "Veuillez rédiger un message avant d'envoyer."
+            },
             home: {
                 introTitle: "Introduction",
                 introP1: "Bonjour ! Je suis <strong>FRAID</strong>, étudiant en <strong>informatique appliquée</strong> à la <strong>Hochschule Worms</strong> et passionné de développement logiciel.",
@@ -88,6 +134,29 @@ document.addEventListener("DOMContentLoaded", function () {
             ],
             nav: { home: "Home", about: "About", projects: "Projects", contact: "Contact" },
             link: { gotoProject: "Go to project" },
+            contact: {
+                pageTitle: "Contact me.",
+                namePlaceholder: "Your name",
+                emailPlaceholder: "Your e-mail",
+                projectPlaceholder: "Project you were interested in",
+                commentPlaceholder: "Leave a public comment.",
+                sendComment: "Send comment",
+                contactQuestion: "Would you like to contact me directly?",
+                yes: "yes",
+                no: "no",
+                privateNamePlaceholder: "Your name",
+                privateEmailPlaceholder: "Your e-mail",
+                privateMessagePlaceholder: "Your message",
+                sendPrivate: "Send private message",
+                commentsTitle: "Visitor comments.",
+                sending: "Sending…",
+                successComment: "Your comment has been sent successfully!",
+                errorComment: "Comment saved, but email sending failed.",
+                successPrivate: "Your message has been sent successfully!",
+                errorPrivate: "Error sending the message.",
+                fillAll: "Please fill in all fields.",
+                writeMessage: "Please write a message before sending."
+            },
             home: {
                 introTitle: "Introduction",
                 introP1: "Hello! I am <strong>FRAID</strong>, an <strong>Applied Computer Science</strong> student at <strong>Hochschule Worms</strong> and a passionate software developer.",
@@ -124,14 +193,23 @@ document.addEventListener("DOMContentLoaded", function () {
     function applyTranslations(lang) {
         const dict = dictionaries[lang];
         if (!dict) return;
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const path = el.getAttribute('data-i18n');
+        function resolve(path) {
             const keys = path.split('.');
             let node = dict;
             for (const k of keys) { node = node && node[k]; }
-            if (typeof node === 'string') {
-                el.innerHTML = node;
-            }
+            return typeof node === 'string' ? node : null;
+        }
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const val = resolve(el.getAttribute('data-i18n'));
+            if (val !== null) el.innerHTML = val;
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const val = resolve(el.getAttribute('data-i18n-placeholder'));
+            if (val !== null) el.placeholder = val;
+        });
+        document.querySelectorAll('[data-i18n-value]').forEach(el => {
+            const val = resolve(el.getAttribute('data-i18n-value'));
+            if (val !== null) el.textContent = val;
         });
         phrases = dict.typing;
     }
@@ -261,6 +339,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const privateMessageForm = document.getElementById("private-message-form");
     const contactChoices = document.getElementsByName("contact-choice");
 
+    /* helper: show a status message in a given element */
+    function showStatus(el, msg, isError) {
+        if (!el) return;
+        el.textContent = msg;
+        el.className = "form-status " + (isError ? "form-status--error" : "form-status--ok");
+    }
+
     if (sendCommentBtn && commentsList) {
         if (typeof emailjs !== 'undefined') {
             emailjs.init("WjR0gy-0XG0CaBQgL");
@@ -274,44 +359,83 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 
+        const commentStatus = document.getElementById("comment-status");
+
         sendCommentBtn.addEventListener("click", function () {
-            const email = document.getElementById("email").value;
-            const project = document.getElementById("project").value;
-            const publicComment = document.getElementById("public-comment").value;
-            if (email && project && publicComment) {
-                const comment = { email, project, message: publicComment };
-                saveComment(comment);
-                displayComment(comment);
-                if (typeof emailjs !== 'undefined') {
-                    emailjs.send("service_m282g53", "template_wh3zu2k", {
-                        email,
-                        project,
-                        message: publicComment
-                    }).then(function () {
-                        alert("Votre commentaire a bien été envoyé !");
-                    }).catch(function () {
-                        alert("Commentaire enregistré, mais l'envoi par e-mail a échoué.");
-                    });
-                }
+            const lang = getLang();
+            const t = dictionaries[lang] && dictionaries[lang].contact || {};
+            const fromName = document.getElementById("from-name") ? document.getElementById("from-name").value.trim() : "";
+            const email = document.getElementById("email").value.trim();
+            const project = document.getElementById("project").value.trim();
+            const publicComment = document.getElementById("public-comment").value.trim();
+            if (!email || !project || !publicComment) {
+                showStatus(commentStatus, t.fillAll || "Veuillez remplir tous les champs.", true);
+                return;
+            }
+            const comment = { email: fromName ? fromName + " <" + email + ">" : email, project, message: publicComment };
+            saveComment(comment);
+            displayComment(comment);
+
+            if (typeof emailjs !== 'undefined') {
+                sendCommentBtn.disabled = true;
+                sendCommentBtn.textContent = t.sending || "Envoi…";
+                emailjs.send("service_m282g53", "template_wh3zu2k", {
+                    from_name: fromName || email,
+                    reply_to: email,
+                    email,
+                    project,
+                    message: publicComment
+                }).then(function () {
+                    sendCommentBtn.disabled = false;
+                    sendCommentBtn.setAttribute('data-i18n-value', 'contact.sendComment');
+                    sendCommentBtn.textContent = t.sendComment || "Envoyer le commentaire";
+                    showStatus(commentStatus, t.successComment || "Votre commentaire a bien été envoyé !", false);
+                    document.getElementById("comment-form").reset();
+                }).catch(function () {
+                    sendCommentBtn.disabled = false;
+                    sendCommentBtn.setAttribute('data-i18n-value', 'contact.sendComment');
+                    sendCommentBtn.textContent = t.sendComment || "Envoyer le commentaire";
+                    showStatus(commentStatus, t.errorComment || "Commentaire enregistré, mais l'envoi par e-mail a échoué.", true);
+                });
             } else {
-                alert("Veuillez remplir tous les champs.");
+                showStatus(commentStatus, t.successComment || "Votre commentaire a bien été envoyé !", false);
+                document.getElementById("comment-form").reset();
             }
         });
 
         if (sendPrivateMsgBtn) {
+            const privateStatus = document.getElementById("private-status");
+
             sendPrivateMsgBtn.addEventListener("click", function () {
-                const privateMessage = document.getElementById("private-message").value;
-                if (!privateMessage.trim()) {
-                    alert("Veuillez rédiger un message avant d'envoyer.");
+                const lang = getLang();
+                const t = dictionaries[lang] && dictionaries[lang].contact || {};
+                const privateName = document.getElementById("private-name") ? document.getElementById("private-name").value.trim() : "";
+                const privateEmail = document.getElementById("private-email") ? document.getElementById("private-email").value.trim() : "";
+                const privateMessage = document.getElementById("private-message").value.trim();
+                if (!privateEmail || !privateMessage) {
+                    showStatus(privateStatus, t.fillAll || "Veuillez remplir tous les champs.", true);
                     return;
                 }
                 if (typeof emailjs !== 'undefined') {
+                    sendPrivateMsgBtn.disabled = true;
+                    sendPrivateMsgBtn.textContent = t.sending || "Envoi…";
                     emailjs.send("service_m282g53", "template_wh3zu2k", {
+                        from_name: privateName || privateEmail,
+                        reply_to: privateEmail,
+                        email: privateEmail,
+                        project: "Message privé",
                         message: privateMessage
                     }).then(function () {
-                        alert("Votre message a bien été envoyé !");
+                        sendPrivateMsgBtn.disabled = false;
+                        sendPrivateMsgBtn.setAttribute('data-i18n-value', 'contact.sendPrivate');
+                        sendPrivateMsgBtn.textContent = t.sendPrivate || "Envoyer le message privé";
+                        showStatus(privateStatus, t.successPrivate || "Votre message a bien été envoyé !", false);
+                        document.getElementById("private-message-form").reset();
                     }).catch(function () {
-                        alert("Erreur lors de l'envoi du message.");
+                        sendPrivateMsgBtn.disabled = false;
+                        sendPrivateMsgBtn.setAttribute('data-i18n-value', 'contact.sendPrivate');
+                        sendPrivateMsgBtn.textContent = t.sendPrivate || "Envoyer le message privé";
+                        showStatus(privateStatus, t.errorPrivate || "Erreur lors de l'envoi du message.", true);
                     });
                 }
             });
