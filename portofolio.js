@@ -295,6 +295,34 @@ document.addEventListener("DOMContentLoaded", function () {
             const val = resolve(el.getAttribute('data-i18n-value'));
             if (val !== null) el.textContent = val;
         });
+        // After translation, ensure open project details sections fit their new content
+        // and that their corresponding buttons show the "show less" label.
+        document.querySelectorAll('.project-details.show').forEach(details => {
+            // Recompute maxHeight based on updated scrollHeight to avoid truncation.
+            details.style.maxHeight = details.scrollHeight + 'px';
+
+            // Try to find the associated details button within the same container.
+            let container = details.closest('.project-card');
+            if (!container) {
+                container = details.parentElement;
+            }
+            if (!container) {
+                return;
+            }
+            const btn = container.querySelector('.details-btn');
+            if (!btn) {
+                return;
+            }
+
+            // If a specific i18n key for the "show less" state is provided, use it.
+            const showLessKey = btn.getAttribute('data-i18n-showless');
+            if (showLessKey) {
+                const showLessLabel = resolve(showLessKey);
+                if (showLessLabel !== null) {
+                    btn.textContent = showLessLabel;
+                }
+            }
+        });
         document.documentElement.lang = lang;
         phrases = dict.typing || phrases;
     }
