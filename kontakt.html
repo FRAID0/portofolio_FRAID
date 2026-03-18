@@ -15,6 +15,19 @@
 
 <body>
     <a href="#main" class="skip-link">Aller au contenu</a>
+
+    <!-- New portfolio modal -->
+    <div id="new-portfolio-modal" class="new-portfolio-modal" role="dialog" aria-modal="true" aria-labelledby="npm-title" hidden>
+        <div class="new-portfolio-modal__content">
+            <h2 id="npm-title" data-i18n="newPortfolio.modalTitle">🚀 Mein neues optimiertes Portfolio ist online!</h2>
+            <p data-i18n="newPortfolio.modalBody">Ich habe ein neues, vollständig optimiertes Portfolio erstellt – mit verbesserter Performance, modernem Design und einer übersichtlicheren Darstellung meiner Projekte und Fähigkeiten. Schau es dir an!</p>
+            <div class="new-portfolio-modal__actions">
+                <a href="https://portfolio-pro-fraid.vercel.app/de" target="_blank" rel="noopener" class="btn" data-i18n="newPortfolio.modalCta">Neues Portfolio ansehen →</a>
+                <button class="close-btn" id="npm-close" data-i18n="newPortfolio.modalClose">Schließen</button>
+            </div>
+            <p class="new-portfolio-modal__note" data-i18n="newPortfolio.modalNote">Nach dem Schließen findest du den Link auch im Footer dieser Seite.</p>
+        </div>
+    </div>
     <nav class="navigation" role="navigation" aria-label="Navigation principale">
         <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">☰<span class="sr-only">Menu</span></button>
         <h1 class="title">
@@ -101,6 +114,7 @@
                 <li><a href="about.html" data-i18n="footer.linkAbout">À propos</a></li>
                 <li><a href="projekts.html" data-i18n="footer.linkProjects">Projets</a></li>
                 <li><a href="kontakt.html" data-i18n="footer.linkContact">Contact</a></li>
+                <li><a href="https://portfolio-pro-fraid.vercel.app/de" target="_blank" rel="noopener" data-i18n="footer.linkNewPortfolio">🚀 Nouveau portfolio optimisé</a></li>
             </ul>
         </div>
         <div class="footer-col">
