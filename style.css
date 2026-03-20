@@ -201,6 +201,10 @@ button:focus-visible,
     outline: 3px solid rgba(255,255,255,0.8);
     outline-offset: 2px;
 }
+.lang-select option {
+    background: #2d1b69;
+    color: #fff;
+}
 
 /* Desktop nav */
 @media (min-width: 768px) {
